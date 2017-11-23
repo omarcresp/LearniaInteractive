@@ -13,7 +13,6 @@
         ></v-text-field>
         
         <v-text-field
-          id="password"
           label="Enter your password"
           hint="At least 8 characters"
           v-model="password"
@@ -32,7 +31,7 @@
           required
         ></v-checkbox>
         <div class="elevation-1 mb-2">
-          <v-btn color="primary">submit</v-btn>
+          <v-btn @click="submit" color="primary">submit</v-btn>
           <v-btn @click="clear" color="primary">clear</v-btn>
         </div>
         <div class="elevation-1">
@@ -48,14 +47,14 @@
 </style>
 
 <script>
-// import Firebase from '../../../firebase/firebaseUtilities.js'
+import { FirebaseCreateUser } from '../../../firebase/firebaseUtilities.js'
+// import swal from 'sweetalert'
 
 export default {
   data: () => ({
     valid: true,
     e1: true,
     password: '',
-    name: '',
     email: '',
     emailRules: [
       (v) => !!v || 'E-mail is required',
@@ -76,6 +75,9 @@ export default {
         })
       }
     }, */
+    submit () {
+      FirebaseCreateUser(this.email, this.password)
+    },
     clear () {
       this.$refs.form.reset()
     }

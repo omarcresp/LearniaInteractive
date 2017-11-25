@@ -12,11 +12,30 @@ function FirebaseCreateUser (email, password) {
       let errorMessage = error.message
 
       swal(errorCode, errorMessage)
+
+      return
     }
+
+    swal('Logiado correctamente!!')
   })
 }
 
-function FirebaseLogin (user, pass, role) {
+function FirebaseLogin (email, password) {
+  Firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+    if (error) {
+      var errorCode = error.code
+      var errorMessage = error.message
+
+      swal(errorCode, errorMessage)
+
+      return
+    }
+
+    swal('Registrado correctamente!!')
+  })
+}
+
+function FirebaseLogin2 (user, pass, role) {
   if (!user) {
     swal('user no defined', '', 'error')
     return
@@ -66,5 +85,6 @@ export {
   Database,
   FirebaseCreateUser,
   FirebaseLogin,
+  FirebaseLogin2,
   FirebaseLogOut
 }

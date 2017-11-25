@@ -4,8 +4,8 @@
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <v-btn flat>Sign In</v-btn>
-        <v-btn flat>Sign Up</v-btn>
+        <v-btn @click="selected = 'SignIn'" flat>Sign In</v-btn>
+        <v-btn @click="selected = 'SignUp'" flat color="primary">Sign Up</v-btn>
         <v-btn flat>Reset</v-btn>
       </v-toolbar-items>
     </v-toolbar>
@@ -13,8 +13,7 @@
       <v-container grid-list-xl text-xs-center>
         <v-layout row wrap>
           <v-flex xs10 offset-xs1>
-            <sign-up></sign-up>
-            <div id="firebaseui-auth-container">sd</div>
+            <component :is="selected"></component>
           </v-flex>
         </v-layout>
       </v-container>
@@ -42,7 +41,8 @@ export default {
     SignUp
   },
   data: () => ({
-    title: 'LearniaInteractive'
+    title: 'LearniaInteractive',
+    selected: 'SignUp'
   }),
   mounted: function () {
     console.log('test')

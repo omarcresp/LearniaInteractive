@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "author": "Matías Muñoz Espinoza <writkas2@gmail.com>",
   "description": "Learnia es un plataforma para la creación y visualización de cursos interactivos.",
-  "license": "GNU General Public License v3.0",
+  "license": "GPL-3.0",
   "main": "./dist/electron/main.js",
   "scripts": {
     "build": "node .electron-vue/build.js && electron-builder",
